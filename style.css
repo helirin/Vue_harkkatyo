@@ -1,0 +1,81 @@
+body{
+   background-color: white;
+}
+table {
+    border-collapse: collapse;
+    width: 40%;
+    background-color:ghostwhite;
+  }
+  
+table, th, td {
+    border-bottom: 1px solid orange;  
+    padding-left: 15px; 
+    padding-right: 15px;
+    margin: 0px;
+    font-size: small;
+    text-align: left;
+}
+h1, h2, h3, div {
+     font-family: Arial, Helvetica, sans-serif;
+}
+.nappi{
+  background-color: azure;
+  color: darkblue;
+  border: 1px solid blueviolet; 
+}
+.nappi:hover{
+  background-color: pink;
+}
+.piilota{
+  visibility: hidden;
+}
+.bar{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.shp{
+  background-color: ghostwhite;
+  width: 300px;
+  display:inline-block;
+}
+.nav{
+  background-color: lightsalmon;
+  width: 150px;
+  padding: 5px;
+  margin-top: 10px;
+  text-align: center;
+  display:inline-block;
+  border: 1px solid darkblue;
+  border-radius: 2px;
+}
+.otsikko{
+  background-image: url("korona.jpg");
+  background-color: lightsalmon;
+  padding: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+a:hover {
+  color: red;
+}
+span:hover{
+  font-size: 110%;
+  font-weight: bold;
+}
+a:link {
+  text-decoration: none;
+  color:darkblue;
+}
+a:visited {
+  text-decoration: none;
+}
+section{
+  color: red;
+  font-size: 110%;
+}
+.yhteensa{
+color: darkred;
+}
+
