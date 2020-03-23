@@ -1,26 +1,39 @@
 
-new Vue({
+var app = new Vue({
   el: '#app',
   data () {
     return {
       info: [],
+      current:0,
+      today:'', 
       recovery:[],
       areas: ['Etelä-Karjala', 'Etelä-Pohjanmaa', 'Etelä-Savo', 'HUS', 'Itä-Savo', 'Kainuu', 'Kanta-Häme', 'Keski-Pohjanmaa', 'Keski-Suomi',
       'Kymenlaakso', 'Lappi', 'Länsi-Pohja', 'Pirkanmaa', 'Pohjois-Karjala', 'Pohjois-Pohjanmaa', 'Pohjois-Savo', 'Päijät-Häme', 
       'Satakunta', 'Vaasa', 'Varsinais-Suomi', 'Ahvenanmaa', 'Muu'],
-      counts: [],
+      counts: [                                          
+        {
+          id:0,
+          name:'', 
+          amount:'' 
+        }
+      ],
       summa: 0,
-      limit: 50,
+      limit: 80,
       loading: true,
       errored: false,
-      nextId:0,
+      message: 'Olemme pahoillamme, mutta informaatio ei ole tällä hetkellä saatavilla, yritä myöhemmin uudelleen.',
+      nextId:1,
     }
   },
   computed:{
-    //rajoitetaan rivimäärää, limitin ilmoittama määrä, aluksi 50
+    //rajoitetaan rivimäärää, limitin ilmoittama määrä, aluksi 80
     limitedInfo(){
       return this.limit ? this.info.slice(0,this.limit) : this.info
-    }
+    },
+    //järjestetään sairaanhoitopiirit tapausten määrän mukaan
+    sortCounts(){
+      return this.counts.sort((a, b) => (a.amount > b.amount) ? -1 : 1)
+     }
     },
     
   filters: {
@@ -32,6 +45,7 @@ new Vue({
           ((str.getDate() < 10) ? '0' : '') + str.getDate();
       }
   },
+  
   
   mounted () {
     //haetaan data ja tallennetaan info ja recovery tauluihin
@@ -52,13 +66,23 @@ new Vue({
               if (element.healthCareDistrict === this.areas[j]){
               lkm = lkm + 1;
               }
-           });
-          j++;
-          this.counts.push(lkm);
-          this.summa = this.summa + lkm;         //lasketaan yhteen kaikki tapaukset
-        }
-         
-      })                           
+           })
+          
+          this.summa = this.summa + lkm;     //lasketaan yhteen kaikki tapaukset
+          this.counts.push({id:this.nextId, name:this.areas[j], amount:lkm}); //tallennetaan listaan 
+          this.nextId++;
+          j++;        
+        } 
+        //lasketaan kuluvan päivän aikana tulleet tartunnat
+        var date = new Date();
+        this.today= date.toISOString().slice(0,10);    //ISO 8601 muotoon, otetaan alkuosa
+        this.info.forEach(item => {
+           if(item.date.slice(0,10)===this.today){
+             this.current++
+            }
+        });
+      })
+                                 
       //jos dataa ei saada ladattua
       .catch(error => {
           console.log(error)
@@ -66,5 +90,6 @@ new Vue({
       })
       .finally(() => this.loading = false)
   },
-
+   
 })
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Koronavirus Suomessa</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="app" class="container">
+    
+      <div class="otsikko"><h1>Koronavirustilanne Suomessa 2020</h1></div> 
+      <div class="nav"><a href="#vahvistetut">Tartunnat</a></div>
+      <div class="nav"><a href="#toipuneet">Parantumiset</a></div>
+      <div class="nav"><a href="#shpeet">Sairaanhoitopiirit</a></div>
+      <div class="nav"><a href="#linkit">Linkit</a></div>
+
+     <p>Alla olevien taulukoiden tiedot koronavirustartunnoista perustuvat Helsingin Sanomien keräämään 
+       <a href="https://github.com/HS-Datadesk/koronavirus-avoindata">
+      ajan tasalla olevaan aineistoon</a>, joka on julkaistu avoimena datana.
+     Tartuntojen todellinen määrä on paljon suurempi, sillä kaikkia vähäoireisia ei ole testattu.  
+     </p>
+     <p>Taudin alkuperämaata ei enää viime aikoina ole kirjattu, joten taulukossa on siinä kohdassa tyhjää.  
+     Mikäli sairaanhoitopiiri on jäänyt datassa tyhjäksi, taulukossa lukee Muu.
+     Taulukossa on oletuksena 80 viimeisintä tapausta. Kaikki rivit saa näkyviin taulukon alareunassa olevalla painikkeella.
+     </p>
+     <section v-if="errored && !loading">
+         <p>{{message}}</p>
+     </section>    
+      <br>
+     <h2 id="vahvistetut">Kaikki vahvistetut koronavirustartunnat: <span class="yhteensa">{{summa}}</span></h2>
+      
+      <h3>Tartunnat tänään: <span class="yhteensa"> {{current}}</span></h3>
+
+      <p>Taulukko sisältää vahvistetut tartunnat tammikuun 29. päivästä alkaen. </p>
+     <table>
+        <tr>
+            <th>Id</th>
+            <th>Päivämäärä</th>
+            <th>Sairaanhoitopiiri</th>
+            <th>Alkuperä</th>
+        </tr>
+       <tr v-for="(item,index) in limitedInfo">
+          <td>{{ item.id }}</td>
+          <td>{{ item.date | dateform }}</td>
+          <td>{{ item.healthCareDistrict }}</td>
+          <td>{{ item.infectionSourceCountry }}</td>
+       </tr>
+     </table>
+      <div v-if="limit!==0"><button class="nappi" @click="limit = 0 " :disabled="limit==0">Näytä enemmän</button></div>
+      <div v-if="limit===0"><button class="nappi" @click="limit = 50" :disabled="limit>0" >Näytä vähemmän</button></div>
+         <br><br><br>
+     <h2 id="toipuneet">Parantumiset</h2>
+     <p>Sairaudesta toipuneita on todennäköisesti paljon enemmän, mutta tietoa ei ole saatu.</p>
+     <table>
+        <tr>
+             <th>Id</th>
+             <th>Päivämäärä</th>
+             <th>Sairaanhoitopiiri</th>
+        </tr>
+        <tr v-for="(item,index) in recovery">
+           <td>{{ item.id }}</td>
+           <td>{{ item.date | dateform }}</td>
+           <td>{{ item.healthCareDistrict }}</td>
+        </tr>
+     </table>
+
+         <br><br><br>
+     <h2 id="shpeet">Vahvistettujen tartuntojen määrä sairaanhoitopiireittäin</h2>
+      <p>Listassa on vahvistetut tartunnat tammikuun 29. päivästä alkaen. Muu = ei julkistettu.</p>
+     <div class="shp"> 
+        <div class="bar" v-for="item in sortCounts"  v-bind:key="item.id">
+           <span> {{item.name}} {{item.amount}} </span>
+        </div>   
+     </div>
+     <img src="shpiirit_varip.jpg" alt="sairaanhoitopiirit kartalla">
+     <div class="bar"><b>Tartuntoja yhteensä {{summa}}</b></div> 
+          <br><br><br>
+
+      <h2 id="linkit">Linkkejä</h2>
+      <p>
+        Tietoa Helsingin Sanomien avoimesta datasta <a href="https://github.com/HS-Datadesk/koronavirus-avoindata">
+        https://github.com/HS-Datadesk/koronavirus-avoindata</a>
+      </p>
+      <p>
+       Helsingin sanomien grafiikkaa koronaviruksesta <a href="https://dynamic.hs.fi/2020/corona-embed-finland/?scope=Global">
+       https://dynamic.hs.fi/2020/corona-embed-finland/?scope=Global</a>
+      </p>
+      <p>
+        <a href="https://dynamic.hs.fi/2020/corona-embed-grid/?composition=%5B%22header%22,%22buttons%22,%22totals%22,%22chart%22,%22grid%22,%22map%22,%22tracking%22,%22credits%22%5D">
+        Helsingin Sanomien koronavirusgrafiikkaa</a>
+      </p>
+      <p>
+        Johns Hopkins yliopiston data koronavirustilanteesta maailmalla <a href="https://coronavirus.jhu.edu/map.html">
+        https://coronavirus.jhu.edu/map.html</a>
+      </p>
+      <p>
+        THL: Ajankohtaista koronaviruksesta
+        <a href="https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19">
+        https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19</a>
+      </p>
+      <p>
+        WHO:n koronavirustietoa <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019">
+        https://www.who.int/emergencies/diseases/novel-coronavirus-2019</a>
+      </p>
+      <p>
+        Omatoiminen Koronan oireiden arviointi <a href="https://www.omaolo.fi/">https://www.omaolo.fi/</a>
+      </p>
+       <p>
+         Helsingin Sanomien datan <a href ="lisenssi.pdf">lisenssi</a>
+       </p>
+         <br><br><br>
+   </div>
+       <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+       <script type="application/javascript" src="haku.js"></script>
+    
+  </body>
+</html>
+
