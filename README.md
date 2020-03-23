@@ -1,4 +1,4 @@
-# Vue_harkkatyo
+# Vue harjoitustyö
 Tämä on Sovelluskehitys-kurssin harjoitustyö, joka on tehty Vue-ohjelmointikehystä käyttäen. 
 Sovellus käyttää Helsingin Sanomien avointa rajapintaa (API), johon on kerätty dataa Suomen koronavirus-tartunnoista.
 https://github.com/HS-Datadesk/koronavirus-avoindata.
