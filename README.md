@@ -11,5 +11,8 @@ Tiedot listataan html-sivulle taulukoihin ja listaan.
 Data on muuttunut alkuvaiheen jälkeen siten, että tartuntalähdettä ei enää kirjata. 
 En kuitenkaan poistanut saraketta, koska alkuvaiheen riveissä on dataa. 
 Sairaanhoitopiirien kirjaaminen muuttui 18.3. siten, että kaikkien tartuntojen sairaanhoitopiirejä ei ilmoiteta. 
-Nämä löytyvät kohdasta ”Muu”.  
+Nämä löytyvät kohdasta ”Muu”. 
+
+Wikissä on kerrottu sovelluksen tekemiseen liittyvistä vaiheista.
+
 Sovelluksen web-osoite: https://dos.seamk.fi/~epedu+k1901135/harkka.html
