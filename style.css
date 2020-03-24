@@ -87,11 +87,14 @@ a:link {
 a:visited {
   text-decoration: none;
 }
-section{
-  color: red;
-  font-size: 110%;
-}
+
 .yhteensa{
 color: darkred;
 }
+.loading{
+  color: blue;
+  width: 70%;
+  height: 600px;
+}
+
 

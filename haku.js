@@ -1,4 +1,6 @@
-
+Vue.component('Loading',{
+  template:'<div>Olemme pahoillamme, mutta informaatio ei ole tällä hetkellä saatavilla, yritä myöhemmin uudelleen.</div>'
+})
 var app = new Vue({
   el: '#app',
   data () {
@@ -18,15 +20,14 @@ var app = new Vue({
         }
       ],
       summa: 0,
-      limit: 80,
+      limit: 100,
       loading: true,
       errored: false,
-      message: 'Olemme pahoillamme, mutta informaatio ei ole tällä hetkellä saatavilla, yritä myöhemmin uudelleen.',
       nextId:1,
     }
   },
   computed:{
-    //rajoitetaan rivimäärää, limitin ilmoittama määrä, aluksi 80
+    //rajoitetaan rivimäärää limitin ilmoittama määrä, aluksi 100
     limitedInfo(){
       return this.limit ? this.info.slice(0,this.limit) : this.info
     },
