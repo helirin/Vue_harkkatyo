@@ -2,7 +2,7 @@
 Tämä on Sovelluskehitys-kurssin harjoitustyö, joka on tehty Vue-ohjelmointikehystä käyttäen. 
 Sovellus käyttää Helsingin Sanomien avointa rajapintaa (API), johon on kerätty dataa Suomen koronavirus-tartunnoista.
 https://github.com/HS-Datadesk/koronavirus-avoindata.
-Data on JSON-muodossa ja sitä päivitetään sitä mukaa kun uusia tietoja tulee.
+Data on JSON-muodossa ja sitä päivitetään sitä mukaa kun uusia tietoja tulee. Huom. Datan päivitys on päättynyt 31.3.2020
 
 Vue-sovellus hakee datan API: sta ja tallentaa sen taulukoihin.  
 Sovellus laskee tartuntojen määrän ja tallentaa ne sairaanhoitopiireittäin. 
