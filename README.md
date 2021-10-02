@@ -16,4 +16,4 @@ Nämä löytyvät kohdasta ”Muu”.
 
 Wikissä on kerrottu sovelluksen tekemiseen liittyvistä vaiheista.
 
-Sovelluksen web-osoite: https://dos.seamk.fi/~epedu+k1901135/harkka.html
+Huom. Sovellus ei ole enää toiminnassa
