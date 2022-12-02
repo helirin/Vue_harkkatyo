@@ -14,12 +14,14 @@
       <div class="nav"><a href="#shpeet">Sairaanhoitopiirit</a></div>
       <div class="nav"><a href="#linkit">Linkit</a></div>
 
+      <h2>Koronaviruksen leviäminen</h2>
+
      <p>Alla olevien taulukoiden tiedot koronavirustartunnoista perustuvat Helsingin Sanomien keräämään 
        <a href="https://github.com/HS-Datadesk/koronavirus-avoindata">
-      ajan tasalla olevaan aineistoon</a>, joka on julkaistu avoimena datana.
+      aineistoon</a>, joka on julkaistu avoimena datana. Tämä sovellus hakee tiedot taulukkoon kyseisestä API:sta.
      Tartuntojen todellinen määrä on paljon suurempi, sillä kaikkia vähäoireisia ei ole testattu.  
      </p>
-     <p>Taudin alkuperämaata ei enää viime aikoina ole kirjattu, joten taulukossa on siinä kohdassa tyhjää.  
+     <p>Taudin alkuperämaata ei alkuvaiheen jälkeen ole kirjattu, joten taulukossa on siinä kohdassa tyhjää.  
      Mikäli sairaanhoitopiiri on jäänyt datassa tyhjäksi, taulukossa lukee Muu.
      Taulukossa on oletuksena 100 viimeisintä tapausta. Kaikki rivit saa näkyviin taulukon alareunassa olevalla painikkeella.
      </p>
@@ -66,8 +68,7 @@
          <br><br><br>
      <h2 id="shpeet">Vahvistettujen tartuntojen määrä sairaanhoitopiireittäin</h2>
       <p>Listassa on vahvistetut tartunnat tammikuun 29. päivästä alkaen. Muu = ei julkistettu.<br>
-      Julkistamattomat sairaanhoitopiirit hieman hämärtävät sairaanhoitopiirien tilannetta.<br>
-      Ilkka-Pohjalaisen mukaan 24.3. Etelä-Pohjanmaalla oli  6 vahvistettua tartuntaa ja Vaasan sairaanhoitopiirissä 16.</p>
+      Julkistamattomat sairaanhoitopiirit hieman hämärtävät sairaanhoitopiirien tilannetta.</p>
      <div class="shp"> 
         <div class="bar" v-for="item in sortCounts"  v-bind:key="item.id">
            <span> {{item.name}} {{item.amount}} </span>
