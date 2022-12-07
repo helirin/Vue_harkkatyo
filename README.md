@@ -16,7 +16,7 @@ Nämä löytyvät kohdasta ”Muu”.
 
 Sovelluksen toimintaa voi tarkastella osoitteessa https://helirin.github.io/Vue_harkkatyo/
 
-Wikissä on kerrottu sovelluksen tekemiseen liittyvistä vaiheista.
+Wikissä on kerrottu sovelluksen tekemiseen liittyvistä vaiheista https://github.com/helirin/Vue_harkkatyo/wiki.
 
 Huom. Sovellus on tehty vuonna 2020, kun koronavirus oli juuri saapunut Suomeen.
 API on edelleen olemassa vuonna 2022, vaikka dataa ei ole lisätty.
