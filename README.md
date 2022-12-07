@@ -19,4 +19,4 @@ Sovelluksen toimintaa voi tarkastella osoitteessa https://helirin.github.io/Vue_
 Wikissä on kerrottu sovelluksen tekemiseen liittyvistä vaiheista.
 
 Huom. Sovellus on tehty vuonna 2020, kun koronavirus oli juuri saapunut Suomeen.
-API on edelleen vuonna olemassa vuonna 2022, vaikka dataa ei ole lisätty.
+API on edelleen olemassa vuonna 2022, vaikka dataa ei ole lisätty.
